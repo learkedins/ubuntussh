@@ -22,17 +22,16 @@ jobs:
       - name: Install build-tools
         run: |
           wget https://android.googlesource.com/platform/prebuilts/build-tools/+archive/refs/heads/master.tar.gz -O ~/master.tar.gz
-          tar xf $PARENT_DIR/master.tar.gz -C ~/build-tools
+          tar xf ~/master.tar.gz -C ~/build-tools
 
       - name: Install gas
         run: |
-          git clone https://android.googlesource.com/platform/prebuilts/gas/linux-x86 $PARENT_DIR/gas/linux-x86
+          git clone https://android.googlesource.com/platform/prebuilts/gas/linux-x86 ~/gas/linux-x86
 
       - name: Install clang
         run: |
-          git clone https://github.com/crdroidandroid/android_prebuilts_clang_host_linux-x86_clang-r416183b $PARENT_DIR/clang-r416183b
+          git clone https://github.com/s5e8825/prebuilts_clang_host_linux-x86_clang-universal8825 ~/clang-universal8825
 
       - name: Running tmate
         run: |
           bash path/script.sh
-
