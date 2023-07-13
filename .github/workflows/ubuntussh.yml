@@ -1,4 +1,4 @@
-nme: Ubuntu SSH
+name: Ubuntu SSH
 
 on:
   workflow_dispatch:
