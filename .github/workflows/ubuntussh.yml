@@ -1,5 +1,8 @@
 nme: Ubuntu SSH
 
+on:
+  workflow_dispatch:
+
 jobs:
   build:
     if: github.event.repository.owner.id == github.event.sender.id
