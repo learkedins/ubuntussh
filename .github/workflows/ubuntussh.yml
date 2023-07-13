@@ -1,0 +1,39 @@
+nme: Ubuntu SSH
+
+jobs:
+  build:
+    if: github.event.repository.owner.id == github.event.sender.id
+    runs-on: ubuntu-20.04
+    permissions:
+      contents: write
+    steps:
+      - name: Cleanup
+        uses: rokibhasansagar/slimhub_actions@main
+      
+      - name: Prepare the environment
+        run: |
+          sudo apt update
+          sudo apt -y upgrade
+          sudo apt -y install gperf gcc-multilib gcc-10-multilib g++-multilib g++-10-multilib libc6-dev lib32ncurses5-dev x11proto-core-dev libx11-dev tree lib32z-dev libgl1-mesa-dev libxml2-utils xsltproc bc ccache lib32readline-dev lib32z1-dev liblz4-tool libncurses5-dev libsdl1.2-dev libwxgtk3.0-gtk3-dev libxml2 lzop pngcrush schedtool squashfs-tools imagemagick libbz2-dev lzma ncftp qemu-user-static libstdc++-10-dev libncurses5 python ssh wget tmate
+
+      - name: Install build-tools
+        run: |
+          wget https://android.googlesource.com/platform/prebuilts/build-tools/+archive/refs/heads/master.tar.gz -O ~/master.tar.gz
+          tar xf $PARENT_DIR/master.tar.gz -C ~/build-tools
+
+      - name: Install gas
+        run: |
+          git clone https://android.googlesource.com/platform/prebuilts/gas/linux-x86 $PARENT_DIR/gas/linux-x86
+
+      - name: Install clang
+        run: |
+          git clone https://github.com/crdroidandroid/android_prebuilts_clang_host_linux-x86_clang-r416183b $PARENT_DIR/clang-r416183b
+
+      - name: Running tmate
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SSH_HOST }}
+        username: ${{ secrets.SSH_USER }}
+        key: ${{ secrets.SSH_KEY }}
+        script: |
+                    bash /opt/git/my-repository/script.sh
