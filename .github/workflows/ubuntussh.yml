@@ -22,8 +22,7 @@ jobs:
       - name: Install build-tools
         run: |
           wget https://android.googlesource.com/platform/prebuilts/build-tools/+archive/refs/heads/master.tar.gz -O ~/master.tar.gz
-          mkdir ~/build-tools
-          tar xf ~/master.tar.gz -C ~/build-tools
+          tar xf ~/master.tar.gz
 
       - name: Install gas
         run: |
