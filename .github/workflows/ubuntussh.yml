@@ -35,8 +35,5 @@ jobs:
       - name: Running tmate
         uses: appleboy/ssh-action@master
         with:
-          host: ${{ secrets.SSH_HOST }}
-        username: ${{ secrets.SSH_USER }}
-        key: ${{ secrets.SSH_KEY }}
         script: |
                     bash /opt/git/my-repository/script.sh
