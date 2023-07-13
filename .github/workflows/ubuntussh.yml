@@ -36,4 +36,4 @@ jobs:
         uses: appleboy/ssh-action@master
         with:
         script: |
-                    bash /opt/git/my-repository/script.sh
+          bash /opt/git/my-repository/script.sh
