@@ -33,12 +33,6 @@ jobs:
           git clone https://github.com/crdroidandroid/android_prebuilts_clang_host_linux-x86_clang-r416183b $PARENT_DIR/clang-r416183b
 
       - name: Running tmate
-        uses: appleboy/ssh-action@master
         run: |
-          tmate -F &
-          while true
-          do
-            sleep 1
-            echo 'SSH'
-          done
+          bash path/script.sh
 
